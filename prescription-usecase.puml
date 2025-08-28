@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+' === Actors ===
+actor Customer
+actor "Retail Store Staff" as RS
+
+' === System Boundary ===
+rectangle "Prescription Module" {
+    (Provide Prescription)
+    (Create Prescription)
+    (Copy Prescription)
+}
+
+' === Use Cases ===
+(Customer) --> (Provide Prescription)
+(RS) --> (Create Prescription)
+
+' === Relationships ===
+(Provide Prescription) --> (Create Prescription) : <<include>>
+(Create Prescription) --> (Copy Prescription) : <<optional>>
+(Customer) --> (Copy Prescription)
+
+' === Notes ===
+note top of (Create Prescription)
+    Postcondition: A prescription is created
+end note
+
+@enduml
