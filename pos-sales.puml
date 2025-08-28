@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+' === Actors ===
+actor Customer
+actor "Retail Store Staff" as RS
+
+' === System Boundary ===
+rectangle "Point of Sales Module" {
+  (Purchase Items)
+  (Create Sales Order)
+  (Receive Receipt)
+}
+
+' === Associations ===
+Customer --> (Purchase Items)
+RS --> (Create Sales Order)
+Customer --> (Receive Receipt)
+
+' === Relationships ===
+(Purchase Items) --> (Create Sales Order) : <<include>>
+(Create Sales Order) --> (Receive Receipt) : <<include>>
+
+' === Notes ===
+note top of (Create Sales Order)
+Postcondition:
+- A sales order is created
+- Item stock is reduced
+end note
+
+@enduml
