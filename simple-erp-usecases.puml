@@ -1,0 +1,70 @@
+@startuml
+left to right direction
+
+' ====================
+' Actors
+' ====================
+actor Customer
+actor "Retail Staff" as RS
+actor "PBF Staff" as PBF
+actor "Finance Team" as FIN
+actor "System" as SYS
+actor Admin
+
+' Actor generalization
+Admin <|-- RS
+Admin <|-- FIN
+
+' ====================
+' System Boundary
+' ====================
+rectangle "Retailsoft ERP System" {
+    
+    ' Use cases
+    (Create Sales Order)
+    (Validate Customer)
+    (Process Payment)
+    (Receive Goods & GR)
+    (Process Return)
+    (Check Warranty)
+    (Auto-generate PO)
+    (Reconcile Transactions)
+    (Generate P&L Report)
+    (Send Expiry Alerts)
+    (Integrate Dashboard via API)
+}
+
+' ====================
+' Associations
+' ====================
+Customer --> (Create Sales Order)
+RS --> (Create Sales Order)
+RS --> (Receive Goods & GR)
+RS --> (Process Return)
+
+PBF --> (Auto-generate PO)
+FIN --> (Reconcile Transactions)
+FIN --> (Generate P&L Report)
+
+SYS --> (Send Expiry Alerts)
+SYS --> (Integrate Dashboard via API)
+
+' ====================
+' Relationships
+' ====================
+(Create Sales Order) --> (Validate Customer) : <<include>>
+(Create Sales Order) --> (Process Payment) : <<include>>
+(Process Return) --> (Check Warranty) : <<extend>>
+
+' ====================
+' Notes
+' ====================
+note right of (Create Sales Order)
+This use case creates a sales order
+and validates the customer
+end note
+
+note top of (Auto-generate PO)
+Triggered automatically
+based on Min-Max stock
+end note
