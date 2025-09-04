@@ -3,6 +3,14 @@ left to right direction
 actor "Retail Store Staff" as Staff
 actor "B2B Customer" as Customer
 
+rectangle "Sales Order Module" {
+  (Create Sales Order)
+  (Choose Payment Method)
+  (Direct Payment)
+  (Payment Terms)
+  (Generate Receipt or Confirmation)
+}
+
 (Customer) --> (Confirm items to purchase)
 
 (Confirm items to purchase) --> (Create Sales Order)
