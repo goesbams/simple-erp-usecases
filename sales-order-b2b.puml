@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+actor "Retail Store Staff" as Staff
+actor "B2B Customer" as Customer
+
+(Customer) --> (Confirm items to purchase)
+
+(Confirm items to purchase) --> (Create Sales Order)
+
+(Staff) --> (Create Sales Order)
+
+(Create Sales Order) --> (Choose Payment Method)
+
+(Choose Payment Method) --> (Direct Payment)
+(Choose Payment Method) --> (Payment Terms)
+
+(Customer) --> (Receive Receipt or Confirmation)
+
+(Create Sales Order) --> (Generate Receipt or Confirmation)
+(Generate Receipt or Confirmation) --> (Receive Receipt or Confirmation)
+
+note bottom of (Generate Receipt or Confirmation)
+  A sales order is created, and item stock is reduced
+end note
+
+@enduml
