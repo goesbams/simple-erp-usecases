@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStaff
+actor "PBF Staff" as PBFStaff
+
+rectangle "Purchase Receipt Feature" as System {
+  usecase "Confirm Goods Receipt" as UC_ConfirmGR
+  usecase "Validate Goods Receipt" as UC_ValidateGR
+}
+
+PBFStaff --> (Process Delivery Order)
+(Process Delivery Order) --> UC_ConfirmGR
+RetailStaff --> UC_ConfirmGR
+RetailStaff --> UC_ValidateGR
+
+UC_ConfirmGR --> UC_ValidateGR : «triggers»
+
+note top of UC_ConfirmGR
+Precondition: PO created, DO issued
+Main: Retail receives goods and confirms receipt with two witnesses
+Post: Confirmation recorded
+end note
+
+note top of UC_ValidateGR
+Precondition: Goods confirmed
+Main: System validates the received goods against the PO
+Post: Goods validated and receipt updated
+end note
+
+@enduml
