@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+
+actor "PBF Staff" as PBFStaff
+actor "Retail Holding" as RetailHolding
+
+rectangle "AR Payment Feature" as System {
+  usecase "Generate AR Payment Request" as UC_GenerateARPayment
+  usecase "Review AR Payment" as UC_ReviewARPayment
+  usecase "Process AR Payment" as UC_ProcessARPayment
+}
+
+PBFStaff --> UC_GenerateARPayment
+RetailHolding --> UC_ReviewARPayment
+RetailHolding --> UC_ProcessARPayment
+
+UC_GenerateARPayment --> UC_ReviewARPayment : «triggers»
+UC_ReviewARPayment --> UC_ProcessARPayment : «triggers»
+
+note top of UC_GenerateARPayment
+Precondition: Sales invoice already created by PBF Staff
+Main: PBF Staff generates AR payment request
+Post: AR payment request initiated
+end note
+
+note top of UC_ReviewARPayment
+Precondition: AR payment request generated
+Main: Retail Holding reviews AR payment request
+Post: AR payment request approved
+end note
+
+note top of UC_ProcessARPayment
+Precondition: AR payment request approved
+Main: Retail Holding processes the AR payment
+Post: AR payment recorded in the system
+end note
+
+@enduml
