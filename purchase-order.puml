@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStaff
+actor "PBF Staff" as PBFStaff
+
+rectangle "PO Management System" as System {
+  usecase "Submit Purchase Order" as UC_SubmitPO
+  usecase "Review & Confirm PO" as UC_ConfirmPO
+}
+
+RetailStaff --> UC_SubmitPO
+PBFStaff --> UC_ConfirmPO
+
+UC_SubmitPO --> UC_ConfirmPO : «triggers»
+
+note top of UC_SubmitPO
+Precondition: None
+Main: Retail staff creates & submits PO to PBF
+Post: New PO created (PO Status=Ordered)
+end note
+
+note top of UC_ConfirmPO
+Precondition: PO submitted
+Main: PBF reviews & confirms PO
+Post: PO status = Confirmed
+end note
+
+@enduml
