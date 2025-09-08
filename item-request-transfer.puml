@@ -7,15 +7,20 @@ rectangle "Inventory System" {
   usecase (Item Request & Transfer)
 }
 
-(Request Item) --> (Item Request & Transfer)
-(Transfer Item) --> (Item Request & Transfer)
+(1. Request Item) --> (Item Request & Transfer)
+(Item Request & Transfer)
 
-StoreA --> (Transfer Item)
-StoreB --> (Request Item)
+StoreB --> (1. Request Item)
+(Item Request & Transfer) --> (2. Confirm Item Request)
+(2. Confirm Item Request) --> StoreA
+StoreA --> (3. Transfer Item)
+(3. Transfer Item) --> (Item Request & Transfer)
+(Item Request & Transfer) --> (4. Receipt Item)
+(4. Receipt Item) --> StoreB
 
 note top of (Item Request & Transfer)
-The stock of Item A in Store A decreases
-the stock of Item A in Store B increases.
+  The stock of Item A in Store A decreases,
+  the stock of Item A in Store B increases.
 end note
 
 @enduml
