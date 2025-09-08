@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStaff
+actor "PBF Staff" as PBFStaff
+
+rectangle "Purchase Invoice Feature" as System {
+  usecase "Create Purchase Invoicing" as UC_CreateInvoicing
+  usecase "Confirm Purchase Invoicing" as UC_ConfirmInvoicing
+}
+
+RetailStaff --> UC_CreateInvoicing
+PBFStaff --> UC_ConfirmInvoicing
+
+UC_CreateInvoicing --> UC_ConfirmInvoicing : «triggers»
+
+note top of UC_CreateInvoicing
+Precondition: Purchase receipt (goods receipt) completed
+Main: Retail Store Staff creates the purchase invoice for the received goods
+Post: Invoice is created and sent for confirmation
+end note
+
+note top of UC_ConfirmInvoicing
+Precondition: Invoice created
+Main: PBF Staff confirms the purchase invoice
+Post: Confirmation recorded and PBF ready to create sales invoice
+end note
+
+@enduml
