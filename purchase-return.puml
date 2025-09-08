@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStaff
+actor "PBF Staff" as PBFStaff
+
+rectangle "Purchase Return Feature" as System {
+  usecase "Process Purchase Return" as UC_ProcessReturn
+  usecase "Confirm Purchase Return" as UC_ConfirmReturn
+  usecase "Receive Returned Items" as UC_ReceiveItems
+}
+
+RetailStaff --> UC_ProcessReturn
+PBFStaff --> UC_ConfirmReturn
+RetailStaff --> UC_ReceiveItems
+
+UC_ProcessReturn --> UC_ConfirmReturn : «triggers»
+UC_ConfirmReturn --> UC_ReceiveItems : «triggers»
+
+note top of UC_ProcessReturn
+Precondition: Retail Store received broken items
+Main: Retail processes the return of broken items
+Post: Return process initiated
+end note
+
+note top of UC_ConfirmReturn
+Precondition: Retail processed return
+Main: PBF Staff confirms the return request
+Post: Return confirmation recorded
+end note
+
+note top of UC_ReceiveItems
+Precondition: Return confirmed
+Main: Retail Store delivers broken items to PBF Staff
+Post: Items returned to PBF
+end note
+
+@enduml
