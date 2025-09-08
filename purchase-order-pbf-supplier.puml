@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+
+actor "PBF Staff" as PBFStaff
+actor "External Supplier" as ExternalSupplier
+
+rectangle "Purchase Order Feature" as System {
+  usecase "Create Purchase Order" as UC_CreatePO
+  usecase "Send PO to Supplier" as UC_SendPO
+}
+
+usecase "Confirm Purchase Order" as UC_ConfirmPO
+
+PBFStaff --> UC_CreatePO
+ExternalSupplier --> UC_ConfirmPO
+
+UC_CreatePO --> UC_SendPO : «triggers»
+UC_SendPO --> UC_ConfirmPO : «triggers»
+
+note top of UC_CreatePO
+Precondition: None
+Main: PBF staff creates the PO
+Post: New PO created and ready for submission
+end note
+
+note top of UC_SendPO
+Precondition: PO created
+Main: PBF staff sends PO to the external supplier
+Post: PO sent via email or printed
+end note
+
+note top of UC_ConfirmPO
+Precondition: PO sent
+Main: External Supplier reviews and confirms the order
+Post: PO confirmed and order processed
+end note
+
+@enduml
