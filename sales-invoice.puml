@@ -1,0 +1,25 @@
+@startuml UC-07_Sales_Invoicing_Creation
+left to right direction
+
+actor "PBF Staff" as PBF
+
+rectangle "Sales Invoice Feature" {
+    usecase "Create Sales Invoice" as UC2
+    usecase "Sales Invoice Generated" as UC4
+}
+
+PBF --> UC2
+UC2 --> UC4: <<triggers>>
+
+note top of UC2
+Precondition: Purchase invoice already created
+Main: PBF Staff creates a sales invoice for the transaction.
+end note
+
+note top of UC4
+Main: The system generates the sales invoice and associates it with the Retail Holding's account.
+Post: The sales invoice is created successfully and PBF Staff is ready to create the AR Payment for the Retail Holding.
+
+end note
+
+@enduml
