@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor "PBF Staff" as PBFStaff
+
+rectangle "Sales Order Feature" as System {
+  usecase "Confirm Retail Store PO" as UC_ConfirmPO
+  usecase "Create Sales Order" as UC_CreateSalesOrder
+}
+
+PBFStaff --> UC_ConfirmPO
+PBFStaff --> UC_CreateSalesOrder
+
+UC_ConfirmPO --> UC_CreateSalesOrder : «triggers»
+
+note top of UC_ConfirmPO
+Precondition: A PO created by Retail Store
+Main: PBF Staff confirms the Retail Store's PO
+Post: PO confirmation status updated
+end note
+
+note top of UC_CreateSalesOrder
+Precondition: PO confirmed
+Main: Based on the PO number, PBF Staff creates a sales order
+Post: New sales order created
+end note
+
+@enduml
