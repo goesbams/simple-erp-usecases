@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+actor "Retail Holding Staff" as RetailHoldingStaff
+
+rectangle "AP Payment Feature" as System {
+  usecase "Review Pending Accounts Payable" as UC_ReviewAP
+  usecase "Initiate AP Payment" as UC_InitiatePayment
+  usecase "Confirm AP Payment" as UC_ConfirmPayment
+}
+
+RetailHoldingStaff --> UC_ReviewAP
+RetailHoldingStaff --> UC_InitiatePayment
+RetailHoldingStaff --> UC_ConfirmPayment
+
+UC_ReviewAP --> UC_InitiatePayment : «triggers»
+UC_InitiatePayment --> UC_ConfirmPayment : «triggers»
+
+note top of UC_ReviewAP
+Precondition: Accounts payable confirmed and due for payment
+Main: Retail Holding Staff reviews pending accounts payable
+Post: Invoice selection for payment
+end note
+
+note top of UC_InitiatePayment
+Precondition: Pending invoices selected
+Main: Payment is initiated by Retail Holding Staff
+Post: Payment request created and processed
+end note
+
+note top of UC_ConfirmPayment
+Precondition: Payment processed
+Main: Retail Holding Staff confirms the payment
+Post: Payment status updated in system
+end note
+
+@enduml
