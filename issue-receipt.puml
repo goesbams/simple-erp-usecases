@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStoreStaff
+
+rectangle "Issue Receipt Feature" as System {
+  usecase "Select Items for Stock Opname/Consignment" as UC_SelectItems
+  usecase "Generate Issue Receipt" as UC_GenerateReceipt
+}
+
+RetailStoreStaff --> UC_SelectItems
+RetailStoreStaff --> UC_GenerateReceipt
+
+UC_SelectItems --> UC_GenerateReceipt : «triggers»
+
+note top of UC_SelectItems
+Precondition: Items processed for stock opname or consignment
+Main: Retail Store Staff selects items to process
+Post: Items selected for issue receipt
+end note
+
+note top of UC_GenerateReceipt
+Precondition: Items selected for stock opname or consignment
+Main: Retail Store Staff generates the issue receipt
+Post: Stock levels updated and receipt recorded
+end note
+
+@enduml
