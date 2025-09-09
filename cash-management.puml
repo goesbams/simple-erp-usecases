@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor "Retail Holding Staff" as RetailHoldingStaff
+
+rectangle "Cash Management Feature" as System {
+  usecase "Select Bank Account & Enter Transaction" as UC_SelectEnter
+  usecase "Confirm Transaction" as UC_ConfirmTransaction
+}
+
+RetailHoldingStaff --> UC_SelectEnter
+RetailHoldingStaff --> UC_ConfirmTransaction
+
+UC_SelectEnter --> UC_ConfirmTransaction : «triggers»
+
+note top of UC_SelectEnter
+Precondition: Bank account details configured
+Main: Retail Holding Staff selects bank account and enters transaction details
+Post: Transaction details captured
+end note
+
+note top of UC_ConfirmTransaction
+Precondition: Transaction details entered
+Main: Retail Holding Staff confirms the transaction
+Post: Bank account updated and transaction recorded
+end note
+
+@enduml
