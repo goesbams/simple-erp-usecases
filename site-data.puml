@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Company Admin" as Admin
+
+rectangle "Site Data Feature" as System {
+    usecase "Configure Site Data" as UC_ConfigureSite
+}
+
+Admin --> UC_ConfigureSite
+
+note top of UC_ConfigureSite
+    Precondition: Admin is logged into the system.
+    Main: Admin configures site data, including site names and costing methods.
+    Post: Site data is configured and saved.
+end note
+
+@enduml
