@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+
+actor "HR Staff" as HR
+
+rectangle "Employee Data Feature" as System {
+    usecase "Register Employee" as UC_RegisterEmployee
+    usecase "Manage Employee Information" as UC_ManageEmployee
+}
+
+HR --> UC_RegisterEmployee
+HR --> UC_ManageEmployee
+
+note top of UC_RegisterEmployee
+    Precondition: HR staff is logged into the system.
+    Main: HR registers employee details.
+    Post: Employee data is registered and saved.
+end note
+
+note top of UC_ManageEmployee
+    Precondition: HR staff is logged into the system.
+    Main: HR manages employee records (e.g., roles, access levels).
+    Post: Employee information is updated and saved.
+end note
+
+@enduml
