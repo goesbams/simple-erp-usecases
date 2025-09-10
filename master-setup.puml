@@ -1,0 +1,90 @@
+@startuml
+left to right direction
+
+actor "Company Admin" as Admin
+
+rectangle "Master Setup Feature" as System {
+    usecase "Configure Operational Parameters" as UC_ConfigureMasterSetup
+    usecase "Define Units of Measurement" as UC_UnitSetup
+    usecase "Set Tax Rules" as UC_TaxSetup
+    usecase "Define Payment Methods" as UC_PaymentTypeSetup
+    usecase "Define Payment Terms" as UC_PaymentTermSetup
+    usecase "Create Adjustment Types" as UC_AdjustmentTypeSetup
+    usecase "Configure Employee Shifts" as UC_ShiftSetup
+    usecase "Setup Point Reward Program" as UC_PointRewardSetup
+    usecase "Customize Invoice Messages" as UC_InvoiceMessageSetup
+    usecase "Set Return Reasons" as UC_ReturnReasonSetup
+}
+
+Admin --> UC_ConfigureMasterSetup
+Admin --> UC_UnitSetup
+Admin --> UC_TaxSetup
+Admin --> UC_PaymentTypeSetup
+Admin --> UC_PaymentTermSetup
+Admin --> UC_AdjustmentTypeSetup
+Admin --> UC_ShiftSetup
+Admin --> UC_PointRewardSetup
+Admin --> UC_InvoiceMessageSetup
+Admin --> UC_ReturnReasonSetup
+
+note right of UC_ConfigureMasterSetup
+    Precondition: Admin is logged in.
+    Main: Admin configures operational parameters for business processes.
+    Post: Master setup is updated.
+end note
+
+note right of UC_UnitSetup
+    Precondition: Admin is logged in.
+    Main: Admin defines units of measurement for products.
+    Post: Units are standardized.
+end note
+
+note right of UC_TaxSetup
+    Precondition: Admin is logged in.
+    Main: Admin configures tax rules and rates.
+    Post: Tax setup is configured.
+end note
+
+note right of UC_PaymentTypeSetup
+    Precondition: Admin is logged in.
+    Main: Admin defines payment methods (e.g., cash, credit).
+    Post: Payment types are defined.
+end note
+
+note right of UC_PaymentTermSetup
+    Precondition: Admin is logged in.
+    Main: Admin defines payment terms.
+    Post: Payment terms are set.
+end note
+
+note right of UC_AdjustmentTypeSetup
+    Precondition: Admin is logged in.
+    Main: Admin creates adjustment types (e.g., stock corrections).
+    Post: Adjustment types are created.
+end note
+
+note right of UC_ShiftSetup
+    Precondition: Admin is logged in.
+    Main: Admin configures employee shifts.
+    Post: Employee shifts are set.
+end note
+
+note right of UC_PointRewardSetup
+    Precondition: Admin is logged in.
+    Main: Admin defines loyalty program for customers.
+    Post: Loyalty program is configured.
+end note
+
+note right of UC_InvoiceMessageSetup
+    Precondition: Admin is logged in.
+    Main: Admin customizes invoice messages.
+    Post: Invoice messages are configured.
+end note
+
+note right of UC_ReturnReasonSetup
+    Precondition: Admin is logged in.
+    Main: Admin sets categories for return reasons.
+    Post: Return reasons are defined.
+end note
+
+@enduml
