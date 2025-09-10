@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+
+actor "Finance Staff" as Finance
+
+rectangle "Cash Bank Data Setup Feature" as System {
+    usecase "Configure Cash Bank Accounts" as UC_CashBankData
+    usecase "Define Cash Flow Types" as UC_CashFlowType
+    usecase "Create Payment Request Types" as UC_PaymentRQType
+    usecase "Manage Petty Cash Transactions" as UC_PettyCashType
+}
+
+Finance --> UC_CashBankData
+Finance --> UC_CashFlowType
+Finance --> UC_PaymentRQType
+Finance --> UC_PettyCashType
+
+note right of UC_CashBankData
+    Precondition: Finance staff is logged in.
+    Main: Finance staff sets up cash and bank accounts.
+    Post: Accounts are configured and saved.
+end note
+
+note right of UC_CashFlowType
+    Precondition: Finance staff is logged in.
+    Main: Finance staff categorizes cash flows.
+    Post: Cash flow types are defined.
+end note
+
+note right of UC_PaymentRQType
+    Precondition: Finance staff is logged in.
+    Main: Finance staff creates and customizes payment request types.
+    Post: Payment request types are created.
+end note
+
+note right of UC_PettyCashType
+    Precondition: Finance staff is logged in.
+    Main: Finance staff manages petty cash transactions.
+    Post: Petty cash transactions are tracked.
+end note
+
+@enduml
