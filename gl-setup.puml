@@ -1,0 +1,58 @@
+@startuml
+left to right direction
+
+actor "Finance Staff" as Finance
+
+rectangle "General Ledger Setup Feature" as System {
+    usecase "Configure GL Accounts" as UC_ConfigureGL
+    usecase "Define Accounting Periods" as UC_PeriodSetup
+    usecase "Manage Currencies" as UC_CurrencySetup
+    usecase "Classify Account Types" as UC_AccountTypeSetup
+    usecase "Maintain Chart of Accounts" as UC_COASetup
+    usecase "Define Account Budgets" as UC_BudgetSetup
+}
+
+Finance --> UC_ConfigureGL
+Finance --> UC_PeriodSetup
+Finance --> UC_CurrencySetup
+Finance --> UC_AccountTypeSetup
+Finance --> UC_COASetup
+Finance --> UC_BudgetSetup
+
+note right of UC_ConfigureGL
+    Precondition: Finance staff is logged in.
+    Main: Finance staff configures GL structure (assets, liabilities, etc.).
+    Post: GL setup is updated and saved.
+end note
+
+note right of UC_PeriodSetup
+    Precondition: Finance staff is logged in.
+    Main: Finance staff defines accounting periods and closes/open them.
+    Post: Accounting periods are managed.
+end note
+
+note right of UC_CurrencySetup
+    Precondition: Finance staff is logged in.
+    Main: Finance staff defines exchange rates for multi-currency environments.
+    Post: Currency setup is updated.
+end note
+
+note right of UC_AccountTypeSetup
+    Precondition: Finance staff is logged in.
+    Main: Finance staff classifies accounts (Assets, Liabilities).
+    Post: Account types are classified and linked.
+end note
+
+note right of UC_COASetup
+    Precondition: Finance staff is logged in.
+    Main: Finance staff maintains the chart of accounts, adding/editing records.
+    Post: COA is updated.
+end note
+
+note right of UC_BudgetSetup
+    Precondition: Finance staff is logged in.
+    Main: Finance staff defines and monitors account budgets.
+    Post: Account budgets are defined and tracked.
+end note
+
+@enduml
