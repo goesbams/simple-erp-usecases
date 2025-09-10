@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Company Admin" as Admin
+
+rectangle "Company Data Feature" as System {
+    usecase "Update Company Profile" as UC_UpdateCompany
+}
+
+Admin --> UC_UpdateCompany
+
+note top of UC_UpdateCompany
+    Precondition: Admin is logged in.
+    Main: Admin updates company profile details.
+    Post: The company profile is updated and saved.
+end note
+
+@enduml
