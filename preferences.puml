@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Company Admin" as Admin
+
+rectangle "Preferences Feature" as System {
+    usecase "Set Company Preferences" as UC_SetPreferences
+}
+
+Admin --> UC_SetPreferences
+
+note top of UC_SetPreferences
+    Precondition: Admin is logged into the system.
+    Main: Admin sets preferences for company operations.
+    Post: Preferences are updated and saved in the system.
+end note
+
+@enduml
