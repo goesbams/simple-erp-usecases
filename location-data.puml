@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Company Admin" as Admin
+
+rectangle "Location Data Feature" as System {
+    usecase "Manage Store Locations" as UC_ManageLocations
+}
+
+Admin --> UC_ManageLocations
+
+note top of UC_ManageLocations
+    Precondition: Admin is logged into the system.
+    Main: Admin manages store locations, including data entry or import.
+    Post: Store/branch location data is updated and saved.
+end note
+
+@enduml
