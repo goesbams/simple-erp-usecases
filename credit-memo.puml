@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStore
+actor "PBF Staff" as PBFStaff
+
+rectangle "Financial Feature – Credit Memo" as System {
+    usecase "Create Credit Memo (Retail Store -> PBF)" as UC_CreateCreditMemo
+}
+
+RetailStore --> UC_CreateCreditMemo
+UC_CreateCreditMemo --> PBFStaff : «notifies»
+
+note right of UC_CreateCreditMemo
+    Precondition: Retail Store has returned items to PBF.
+    Main: Retail Store Staff creates a Credit Memo to reduce the amount owed.
+    Post: Credit Memo is created, and balance is adjusted.
+end note
+
+@enduml
