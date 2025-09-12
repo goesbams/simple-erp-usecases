@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+actor "Procurement Staff" as Procurement
+actor "Admin" as Admin
+
+rectangle "Vendor Price List Feature" as System {
+    usecase "Add Vendor-Specific Pricing" as UC_AddVendorPricing
+    usecase "Define Start and End Dates for Pricing" as UC_PriceValidityDates
+    usecase "Track Vendor Price Changes" as UC_TrackPriceChanges
+}
+
+Procurement --> UC_AddVendorPricing
+Admin --> UC_PriceValidityDates
+Procurement --> UC_TrackPriceChanges
+
+note right of UC_AddVendorPricing
+    Precondition: Procurement staff is logged in.
+    Main: Procurement staff adds vendor-specific pricing.
+    Post: Vendor prices are entered.
+end note
+
+note right of UC_PriceValidityDates
+    Precondition: Admin is logged in.
+    Main: Admin defines start and end dates for prices.
+    Post: Pricing validity is tracked.
+end note
+
+note right of UC_TrackPriceChanges
+    Precondition: Procurement staff is logged in.
+    Main: Procurement staff tracks price changes from vendors.
+    Post: Price changes are recorded and updated.
+end note
+
+@enduml
