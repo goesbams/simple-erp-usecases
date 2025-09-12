@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStore
+
+rectangle "Medical Feature – Price Checker" as System {
+    usecase "Verify Item Price" as UC_VerifyPrice
+}
+
+RetailStore --> UC_VerifyPrice
+
+note right of UC_VerifyPrice
+    Precondition: Retail Store Staff is logged in.
+    Main: Retail Store Staff uses Price Checker to verify item prices.
+    Post: Item price is displayed along with tax/discount information.
+end note
+
+@enduml
