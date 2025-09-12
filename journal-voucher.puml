@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Finance Staff" as Finance
+
+rectangle "General Ledger Feature – Journal Voucher" as System {
+    usecase "Create Journal Voucher" as UC_CreateJournalVoucher
+}
+
+Finance --> UC_CreateJournalVoucher
+
+note right of UC_CreateJournalVoucher
+    Precondition: Finance Staff is logged in.
+    Main: Finance Staff creates a journal voucher for transaction recording.
+    Post: Journal voucher is created and posted in the general ledger.
+end note
+
+@enduml
