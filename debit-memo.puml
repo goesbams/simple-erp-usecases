@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStore
+actor "PBF Staff" as PBFStaff
+
+rectangle "Financial Feature – Debit Memo" as System {
+    usecase "Create Debit Memo (Retail Store -> PBF)" as UC_CreateDebitMemo
+}
+
+RetailStore --> UC_CreateDebitMemo
+UC_CreateDebitMemo --> PBFStaff : «notifies»
+
+note right of UC_CreateDebitMemo
+    Precondition: Retail Store has made a purchase from PBF.
+    Main: Retail Store Staff creates a Debit Memo for overcharges or adjustments.
+    Post: Debit Memo is processed and logged.
+end note
+
+@enduml
