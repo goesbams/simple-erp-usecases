@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+actor "Admin" as Admin
+
+rectangle "Customer Price List Feature" as System {
+    usecase "Create Price Scheme" as UC_PriceScheme
+    usecase "Define Price List Start and End Dates" as UC_PriceListDates
+    usecase "Assign Price Lists to Locations" as UC_PriceListLocation
+    usecase "Assign Price Lists to Customer Categories" as UC_PriceListCustomerCategory
+}
+
+Sales --> UC_PriceScheme
+Admin --> UC_PriceListDates
+Admin --> UC_PriceListLocation
+Sales --> UC_PriceListCustomerCategory
+
+note right of UC_PriceScheme
+    Precondition: Sales staff is logged in.
+    Main: Sales staff creates price schemes for different customer types.
+    Post: Price schemes are created.
+end note
+
+note right of UC_PriceListDates
+    Precondition: Admin is logged in.
+    Main: Admin defines the start and end dates for each price list.
+    Post: Price lists have valid periods.
+end note
+
+note right of UC_PriceListLocation
+    Precondition: Admin is logged in.
+    Main: Admin assigns price lists to specific locations (stores, regions).
+    Post: Price lists are applied to locations.
+end note
+
+note right of UC_PriceListCustomerCategory
+    Precondition: Sales staff is logged in.
+    Main: Sales staff assigns price lists to customer categories.
+    Post: Price lists are linked to customer categories.
+end note
+
+@enduml
