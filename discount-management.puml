@@ -1,0 +1,68 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+actor "Marketing Staff" as Marketing
+actor "Admin" as Admin
+
+rectangle "Discount Management Feature" as System {
+    usecase "Create Promo Codes" as UC_PromoCodes
+    usecase "Assign Discounts to Customer Types" as UC_CustomerTypes
+    usecase "Set Discounts for Item Categories" as UC_ItemCategories
+    usecase "Configure Payment Type Discounts" as UC_PaymentTypes
+    usecase "Set Discount Start and End Dates" as UC_DiscountDates
+    usecase "Create Special Discount Offers" as UC_SpecialDiscounts
+    usecase "Apply Discount per Item" as UC_ItemDiscountValue
+}
+
+Sales --> UC_PromoCodes
+Marketing --> UC_CustomerTypes
+Marketing --> UC_ItemCategories
+Admin --> UC_PaymentTypes
+Admin --> UC_DiscountDates
+Marketing --> UC_SpecialDiscounts
+Sales --> UC_ItemDiscountValue
+
+note right of UC_PromoCodes
+    Precondition: Marketing staff is logged in.
+    Main: Marketing staff creates and manages promo codes.
+    Post: Promo codes are linked to discount offers.
+end note
+
+note right of UC_CustomerTypes
+    Precondition: Sales or Marketing staff is logged in.
+    Main: Discounts are configured for specific customer types.
+    Post: Customer type-based discounts are created.
+end note
+
+note right of UC_ItemCategories
+    Precondition: Marketing staff is logged in.
+    Main: Marketing staff configures discounts for item categories.
+    Post: Item category-based discounts are set.
+end note
+
+note right of UC_PaymentTypes
+    Precondition: Admin is logged in.
+    Main: Admin configures payment method-based discounts.
+    Post: Payment method discounts are set.
+end note
+
+note right of UC_DiscountDates
+    Precondition: Admin is logged in.
+    Main: Admin sets start and end dates for discounts.
+    Post: Discount validity dates are defined.
+end note
+
+note right of UC_SpecialDiscounts
+    Precondition: Marketing staff is logged in.
+    Main: Marketing staff configures special discount offers.
+    Post: Special discounts are set.
+end note
+
+note right of UC_ItemDiscountValue
+    Precondition: Sales staff is logged in.
+    Main: Sales staff configures per-item discounts.
+    Post: Item-level discounts are applied.
+end note
+
+@enduml
