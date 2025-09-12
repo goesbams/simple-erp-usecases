@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor "PBF Staff" as PBFStaff
+actor "Retail Holding" as RetailHolding
+
+rectangle "Sales Feature – Delivery Order Creation" as System {
+    usecase "Create Delivery Order" as UC_CreateDO
+    usecase "View Delivery Order" as UC_ViewDO
+}
+
+PBFStaff --> UC_CreateDO
+RetailHolding --> UC_ViewDO
+UC_CreateDO --> UC_ViewDO : «triggers»
+
+note top of UC_CreateDO
+    Precondition: PBF Staff has confirmed the sales order.
+    Main: PBF Staff creates a Delivery Order (DO).
+    Post: Delivery Order is created with shipment details.
+end note
+
+note bottom of UC_ViewDO
+    Precondition: Retail Holding receives the Delivery Order.
+    Main: Retail Holding views details of the shipment.
+    Post: Delivery status and shipment details are confirmed.
+end note
+
+@enduml
