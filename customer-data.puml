@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+
+rectangle "Customer Data Setup Feature" as System {
+    usecase "Manage Customer Information" as UC_CustomerData
+    usecase "Define Customer Types" as UC_CustomerType
+    usecase "View Customer Records" as UC_ViewCustomer
+}
+
+Sales --> UC_CustomerData
+Sales --> UC_CustomerType
+Sales --> UC_ViewCustomer
+
+note right of UC_CustomerData
+    Precondition: Sales staff is logged in.
+    Main: Sales staff stores customer details.
+    Post: Customer records are stored.
+end note
+
+note right of UC_CustomerType
+    Precondition: Sales staff is logged in.
+    Main: Sales staff defines customer types (VIP, Regular, etc.).
+    Post: Customer types are defined.
+end note
+
+note right of UC_ViewCustomer
+    Precondition: Sales staff is logged in.
+    Main: Sales staff views and manages customer records.
+    Post: Customer data is updated and accessible.
+end note
+
+@enduml
