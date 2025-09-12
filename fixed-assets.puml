@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Finance Staff" as Finance
+
+rectangle "Fixed Assets Feature" as System {
+    usecase "Manage Fixed Asset Records" as UC_ManageAssets
+}
+
+Finance --> UC_ManageAssets
+
+note right of UC_ManageAssets
+    Precondition: Finance Staff is logged in.
+    Main: Finance Staff manages fixed asset records, including adding and updating assets.
+    Post: Fixed asset records are updated and logged.
+end note
+
+@enduml
