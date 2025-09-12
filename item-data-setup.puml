@@ -1,0 +1,66 @@
+@startuml
+left to right direction
+
+actor "Inventory Staff" as Inventory
+
+rectangle "Item Data Setup Feature" as System {
+    usecase "Manage Item Information" as UC_ItemData
+    usecase "Define Item Categories" as UC_CategoryData
+    usecase "View Item Records" as UC_ItemView
+    usecase "Add New Items" as UC_ItemSetup
+    usecase "Calculate Item Prices" as UC_PriceCalculator
+    usecase "Monitor Inventory Levels" as UC_InventoryLevel
+    usecase "Add Custom Fields" as UC_CustomField
+}
+
+Inventory --> UC_ItemData
+Inventory --> UC_CategoryData
+Inventory --> UC_ItemView
+Inventory --> UC_ItemSetup
+Inventory --> UC_PriceCalculator
+Inventory --> UC_InventoryLevel
+Inventory --> UC_CustomField
+
+note right of UC_ItemData
+    Precondition: Inventory staff is logged in.
+    Main: Inventory staff manages item records.
+    Post: Item data is stored.
+end note
+
+note right of UC_CategoryData
+    Precondition: Inventory staff is logged in.
+    Main: Inventory staff defines item categories.
+    Post: Item categories are set.
+end note
+
+note right of UC_ItemView
+    Precondition: Inventory staff is logged in.
+    Main: Inventory staff views item details.
+    Post: Item data is displayed.
+end note
+
+note right of UC_ItemSetup
+    Precondition: Inventory staff is logged in.
+    Main: Inventory staff adds new items.
+    Post: New items are added and recorded.
+end note
+
+note right of UC_PriceCalculator
+    Precondition: Inventory staff is logged in.
+    Main: Inventory staff calculates and updates item prices.
+    Post: Prices are updated.
+end note
+
+note right of UC_InventoryLevel
+    Precondition: Inventory staff is logged in.
+    Main: Inventory staff tracks stock levels.
+    Post: Stock levels are updated and monitored.
+end note
+
+note right of UC_CustomField
+    Precondition: Inventory staff is logged in.
+    Main: Inventory staff adds custom fields for items.
+    Post: Custom fields are added and saved.
+end note
+
+@enduml
