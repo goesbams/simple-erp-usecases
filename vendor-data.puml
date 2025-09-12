@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+
+actor "Procurement Staff" as Procurement
+
+rectangle "Vendor Data Setup Feature" as System {
+    usecase "Manage Vendor Information" as UC_VendorData
+    usecase "Define Vendor Types" as UC_VendorType
+    usecase "View Vendor Records" as UC_ViewVendor
+    usecase "Manage Courier Data" as UC_CourierData
+    usecase "Define FOB Terms" as UC_FOBData
+}
+
+Procurement --> UC_VendorData
+Procurement --> UC_VendorType
+Procurement --> UC_ViewVendor
+Procurement --> UC_CourierData
+Procurement --> UC_FOBData
+
+note right of UC_VendorData
+    Precondition: Procurement staff is logged in.
+    Main: Procurement staff manages vendor information.
+    Post: Vendor records are stored and maintained.
+end note
+
+note right of UC_VendorType
+    Precondition: Procurement staff is logged in.
+    Main: Procurement staff defines vendor categories.
+    Post: Vendor types are categorized.
+end note
+
+note right of UC_ViewVendor
+    Precondition: Procurement staff is logged in.
+    Main: Procurement staff views vendor details.
+    Post: Vendor data is updated.
+end note
+
+note right of UC_CourierData
+    Precondition: Procurement staff is logged in.
+    Main: Procurement staff manages courier details.
+    Post: Courier data is recorded.
+end note
+
+note right of UC_FOBData
+    Precondition: Procurement staff is logged in.
+    Main: Procurement staff defines FOB terms.
+    Post: FOB terms are recorded.
+end note
+
+@enduml
