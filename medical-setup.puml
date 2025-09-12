@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor "Medical Staff" as Medical
+
+rectangle "Medical Setup Feature" as System {
+    usecase "Configure Medical Parameters" as UC_MedicalConfig
+    usecase "Define Packaging for Powder Items" as UC_PowderPackaging
+    usecase "Set Margin Percentages" as UC_MarginSetup
+}
+
+Medical --> UC_MedicalConfig
+Medical --> UC_PowderPackaging
+Medical --> UC_MarginSetup
+
+note right of UC_MedicalConfig
+    Precondition: Medical staff is logged in.
+    Main: Medical staff configures pharmacy parameters (e.g., prescriptions, RFee).
+    Post: Pharmacy configuration is updated.
+end note
+
+note right of UC_PowderPackaging
+    Precondition: Medical staff is logged in.
+    Main: Medical staff defines packaging details for powder items.
+    Post: Powder packaging details are saved.
+end note
+
+note right of UC_MarginSetup
+    Precondition: Medical staff is logged in.
+    Main: Medical staff sets margins for products and customer types.
+    Post: Margins are configured.
+end note
+
+@enduml
