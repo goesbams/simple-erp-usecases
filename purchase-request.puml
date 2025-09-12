@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStore
+actor "PBF Staff" as PBFStaff
+
+rectangle "Purchase Feature – Purchase Request" as System {
+    usecase "Enter Purchase Request Details" as UC_EnterRequest
+    usecase "Review and Approve Request" as UC_ReviewRequest
+}
+
+RetailStore --> UC_EnterRequest
+PBFStaff --> UC_ReviewRequest
+UC_EnterRequest --> UC_ReviewRequest : «triggers»
+
+note top of UC_EnterRequest
+    Precondition: Retail Store Staff is logged in.
+    Main: Retail Store Staff enters product code, quantity, and location for the purchase request.
+    Post: Request details are saved.
+end note
+
+note bottom of UC_ReviewRequest
+    Precondition: Purchase request details are entered.
+    Main: PBF Staff reviews and approves or adjusts the request based on inventory needs.
+    Post: Request is approved or adjusted.
+end note
+
+@enduml
