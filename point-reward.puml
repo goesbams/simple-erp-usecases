@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStore
+
+rectangle "Sales Feature – Point Reward" as System {
+    usecase "Assign Points for Purchases" as UC_AssignPoints
+    usecase "Track Customer Points" as UC_TrackPoints
+    usecase "Redeem Points" as UC_RedeemPoints
+}
+
+RetailStore --> UC_AssignPoints
+RetailStore --> UC_TrackPoints
+RetailStore --> UC_RedeemPoints
+
+note right of UC_AssignPoints
+    Precondition: Retail Store Staff is logged in.
+    Main: Retail Store Staff assigns reward points to customer purchases.
+    Post: Points are assigned and saved in the system.
+end note
+
+note right of UC_TrackPoints
+    Precondition: Retail Store Staff is logged in.
+    Main: Retail Store Staff tracks the customer’s reward points.
+    Post: Points balance is updated and tracked.
+end note
+
+note right of UC_RedeemPoints
+    Precondition: Retail Store Staff is logged in.
+    Main: Retail Store Staff redeems points for discounts.
+    Post: Points are redeemed and deducted.
+end note
+
+@enduml
