@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor "Finance Staff" as Finance
+
+rectangle "Financial Feature – Interbank Transfer" as System {
+    usecase "Initiate Transfer" as UC_InitiateTransfer
+    usecase "Confirm Transfer" as UC_ConfirmTransfer
+}
+
+Finance --> UC_InitiateTransfer
+Finance --> UC_ConfirmTransfer
+UC_InitiateTransfer --> UC_ConfirmTransfer : «triggers»
+
+note top of UC_InitiateTransfer
+    Precondition: Finance Staff is logged in.
+    Main: Finance Staff initiates a fund transfer between bank accounts.
+    Post: Transfer is initiated and details entered.
+end note
+
+note top of UC_ConfirmTransfer
+    Precondition: Transfer details are entered.
+    Main: Finance Staff confirms the transfer and processes it.
+    Post: Transfer is completed and logged.
+end note
+
+@enduml
