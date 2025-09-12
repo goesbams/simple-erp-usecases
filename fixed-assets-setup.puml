@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+
+actor "Asset Manager" as Asset
+
+rectangle "Fixed Asset Setup Feature" as System {
+    usecase "Configure Asset Depreciation and Fiscal Settings" as UC_FixedAssetFiscal
+    usecase "Define Asset Categories" as UC_FixedAssetType
+    usecase "Classify Assets into Categories" as UC_Category
+    usecase "Add Custom Fields for Assets" as UC_CustomField
+    usecase "Define Asset Maintenance Schedules" as UC_MaintenanceType
+}
+
+Asset --> UC_FixedAssetFiscal
+Asset --> UC_FixedAssetType
+Asset --> UC_Category
+Asset --> UC_CustomField
+Asset --> UC_MaintenanceType
+
+note right of UC_FixedAssetFiscal
+    Precondition: Asset manager is logged in.
+    Main: Asset manager sets fiscal depreciation and asset types.
+    Post: Depreciation settings are configured.
+end note
+
+note right of UC_FixedAssetType
+    Precondition: Asset manager is logged in.
+    Main: Asset manager defines asset categories (vehicles, machinery, etc.).
+    Post: Asset categories are defined.
+end note
+
+note right of UC_Category
+    Precondition: Asset manager is logged in.
+    Main: Asset manager classifies fixed assets into groups.
+    Post: Categories are created for easier tracking.
+end note
+
+note right of UC_CustomField
+    Precondition: Asset manager is logged in.
+    Main: Asset manager adds custom fields to asset records.
+    Post: Custom fields are added.
+end note
+
+note right of UC_MaintenanceType
+    Precondition: Asset manager is logged in.
+    Main: Asset manager defines and schedules maintenance types.
+    Post: Maintenance schedules are defined for assets.
+end note
+
+@enduml
