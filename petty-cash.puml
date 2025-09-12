@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor "Finance Staff" as Finance
+
+rectangle "Financial Feature – Petty Cash" as System {
+    usecase "Record Petty Cash Transaction" as UC_RecordTransaction
+    usecase "Update Petty Cash Balance" as UC_UpdateBalance
+}
+
+Finance --> UC_RecordTransaction
+Finance --> UC_UpdateBalance
+UC_RecordTransaction --> UC_UpdateBalance : «triggers»
+
+note top of UC_RecordTransaction
+    Precondition: Finance Staff is logged in.
+    Main: Finance Staff records petty cash transactions.
+    Post: Transaction details are recorded.
+end note
+
+note bottom of UC_UpdateBalance
+    Precondition: Transaction recorded.
+    Main: Finance Staff updates petty cash balance.
+    Post: Balance is updated and recorded.
+end note
+
+@enduml
