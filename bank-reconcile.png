@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor "Finance Staff" as Finance
+
+rectangle "Financial Feature – Bank Reconcile" as System {
+    usecase "Match Transactions" as UC_MatchTransactions
+    usecase "Identify Discrepancies" as UC_IdentifyDiscrepancies
+}
+
+Finance --> UC_MatchTransactions
+Finance --> UC_IdentifyDiscrepancies
+UC_MatchTransactions --> UC_IdentifyDiscrepancies : «triggers»
+
+note top of UC_MatchTransactions
+    Precondition: Finance Staff is logged in.
+    Main: Finance Staff matches bank statement transactions with company records.
+    Post: Transactions are matched and confirmed.
+end note
+
+note bottom of UC_IdentifyDiscrepancies
+    Precondition: Transactions are matched.
+    Main: Finance Staff identifies discrepancies between records.
+    Post: Discrepancies are flagged for review.
+end note
+
+@enduml
