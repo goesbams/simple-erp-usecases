@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+actor "Retail Store Staff" as RetailStaff
+actor "PBF Staff" as PBFStaff
+
+rectangle "Purchase Return Feature" as System {
+    usecase "Process Purchase Return" as UC_ProcessReturn
+    usecase "Confirm Return" as UC_ConfirmReturn
+    usecase "Update Inventory" as UC_UpdateInventory
+}
+
+RetailStaff --> UC_ProcessReturn
+PBFStaff --> UC_ConfirmReturn
+RetailStaff --> UC_UpdateInventory
+UC_ProcessReturn --> UC_ConfirmReturn : «triggers»
+UC_ConfirmReturn --> UC_UpdateInventory : «triggers»
+
+note top of UC_ProcessReturn
+    Precondition: Retail Store Staff is logged in.
+    Main: Retail Store Staff processes return of purchased goods.
+    Post: Return quantity and reason tracked.
+end note
+
+note bottom of UC_ConfirmReturn
+    Precondition: Return processed by Retail Store.
+    Main: PBF Staff confirms the return request.
+    Post: Return confirmed and recorded.
+end note
+
+note top of UC_UpdateInventory
+    Precondition: Return confirmed by PBF.
+    Main: Retail Store updates inventory based on returned goods.
+    Post: Inventory is updated and return is logged.
+end note
+
+@enduml
