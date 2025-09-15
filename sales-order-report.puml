@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+actor "Admin" as Admin
+
+rectangle "Sales Report Feature" as System {
+    usecase "View Sales Order Details" as UC_SalesOrder
+}
+
+Sales --> UC_SalesOrder
+Admin --> UC_SalesOrder
+
+note right of UC_SalesOrder
+    Precondition: Sales Staff/Admin is logged in.
+    Main: User views detailed sales order information.
+    Post: Sales order report is generated with all order details.
+end note
+
+@enduml
