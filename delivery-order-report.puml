@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+actor "Admin" as Admin
+
+rectangle "Sales Report Feature" as System {
+    usecase "Track Delivery Order Details" as UC_DeliveryOrder
+}
+
+Sales --> UC_DeliveryOrder
+Admin --> UC_DeliveryOrder
+
+note right of UC_DeliveryOrder
+    Precondition: Sales Staff/Admin is logged in.
+    Main: User tracks delivery orders, including shipment status and quantities.
+    Post: Delivery order report is generated with confirmed delivery details.
+end note
+
+@enduml
