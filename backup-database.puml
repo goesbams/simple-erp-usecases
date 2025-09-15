@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Admin" as Admin
+
+rectangle "Backup Database Feature" as System {
+    usecase "Create Database Backup" as UC_BackupDatabase
+}
+
+Admin --> UC_BackupDatabase
+
+note right of UC_BackupDatabase
+    Precondition: Admin is logged in and has permission.
+    Main: Admin backs up the database for safety.
+    Post: Database is successfully backed up.
+end note
+
+@enduml
