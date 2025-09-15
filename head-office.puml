@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Head Office Staff" as HOStaff
+actor "Admin" as Admin
+
+rectangle "Head Office Feature" as System {
+    usecase "Synchronize Data with Stores" as UC_SyncData
+}
+
+HOStaff --> UC_SyncData
+Admin --> UC_SyncData
+
+note right of UC_SyncData
+    Precondition: Admin is logged in and has permission.
+    Main: Admin syncs data between Head Office and stores.
+    Post: Data is synchronized across locations.
+end note
+
+@enduml
