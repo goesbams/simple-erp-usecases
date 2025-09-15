@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Admin" as Admin
+
+rectangle "Restore Database Feature" as System {
+    usecase "Restore Database from Backup" as UC_RestoreDatabase
+}
+
+Admin --> UC_RestoreDatabase
+
+note right of UC_RestoreDatabase
+    Precondition: Admin is logged in and has permission.
+    Main: Admin restores the database from a backup.
+    Post: Database is successfully restored.
+end note
+
+@enduml
