@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+actor "Admin" as Admin
+
+rectangle "Sales Report Feature" as System {
+    usecase "Track Sales Invoice" as UC_SalesInvoice
+}
+
+Sales --> UC_SalesInvoice
+Admin --> UC_SalesInvoice
+
+note right of UC_SalesInvoice
+    Precondition: Sales Staff/Admin is logged in.
+    Main: User tracks the sales invoices for completed transactions.
+    Post: Sales invoice report is generated with all financial details.
+end note
+
+@enduml
