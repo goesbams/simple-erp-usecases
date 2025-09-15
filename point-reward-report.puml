@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+actor "Admin" as Admin
+
+rectangle "Sales Report Feature" as System {
+    usecase "Track Customer Loyalty Points" as UC_PointReward
+}
+
+Sales --> UC_PointReward
+Admin --> UC_PointReward
+
+note right of UC_PointReward
+    Precondition: Sales Staff/Admin is logged in.
+    Main: User tracks customer reward points earned or redeemed.
+    Post: Point reward report is generated showing customer loyalty data.
+end note
+
+@enduml
