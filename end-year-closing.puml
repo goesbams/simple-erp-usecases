@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Admin" as Admin
+
+rectangle "End Year Closing Feature" as System {
+    usecase "Close Financial Year" as UC_EndYearClosing
+}
+
+Admin --> UC_EndYearClosing
+
+note right of UC_EndYearClosing
+    Precondition: Admin is logged in and has permission.
+    Main: Admin closes the financial year for records.
+    Post: Financial year is closed and system is ready for the new year.
+end note
+
+@enduml
