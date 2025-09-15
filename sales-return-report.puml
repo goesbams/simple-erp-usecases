@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Sales Staff" as Sales
+actor "Admin" as Admin
+
+rectangle "Sales Report Feature" as System {
+    usecase "Track Sales Return" as UC_SalesReturn
+}
+
+Sales --> UC_SalesReturn
+Admin --> UC_SalesReturn
+
+note right of UC_SalesReturn
+    Precondition: Sales Staff/Admin is logged in.
+    Main: User tracks sales returns including reasons and items returned.
+    Post: Sales return report is generated and inventory updated.
+end note
+
+@enduml
